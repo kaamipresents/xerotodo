@@ -1,0 +1,50 @@
+
+
+.profile-container {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background: var(--color-primary);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.profile-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    /* color: #333; */
+    background: transparent;
+}
+
+.profile-card {
+    background: var(--color-primary);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.profile-card strong{
+    background: transparent;
+}
+
+.profile-card p {
+    margin: 0.5rem 0;
+    color: #555;
+    background: transparent;
+}
+
+.profile-btn {
+    background: var(--color-secondary);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.profile-btn:hover {
+    background: var(--color-bg);
+}

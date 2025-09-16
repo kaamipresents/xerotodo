@@ -1,0 +1,385 @@
+/* TodoApp.css */
+
+.todo-app {
+    width: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    color: var(--color-text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+}
+
+.container {
+    width: 40%;
+    max-width: 772px;
+    border-radius: 24px;
+    padding: 40px;
+    margin: auto;
+}
+
+/* Stats Section */
+.stats-section {
+    border-radius: 24px;
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2); */
+    margin-bottom: 24px;
+    border: 2px solid var(--color-primary);
+}
+
+.stats-text h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 4px;
+    color: var(--color-text);
+}
+
+.stats-text p {
+    font-size: 16px;
+    color: var(--color-text);
+}
+
+.progress-circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.progress-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--color-bg);
+    background: transparent;
+}
+
+/* Input Section */
+.input-section {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+    padding: 0 1rem;
+}
+
+.task-input {
+    flex-grow: 1;
+    background-color: var(--color-secondary);
+    border: 1px solid var(--color-secondary);
+    color: var(--color-text);
+    border-radius: 16px;
+    padding: 12px 20px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.task-input::placeholder {
+    color: grey;
+}
+
+.task-input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(255, 127, 78, 0.1);
+}
+
+.task-select{
+    position: absolute;
+    margin: auto;
+    right: 20%;
+    border-radius: 12px;
+    padding: 0.2rem 0.5rem;
+    border: 2px var(--color-primary) solid;
+    /* width: 100px; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: center;
+}
+
+.task-select:focus{
+    background: var(--color-primary);
+    border: 2px var(--color-primary) solid;
+    outline: none;
+}
+
+.task-select:hover{
+    border: 2px var(--color-text) solid;
+}
+
+.task-select option {
+  padding: 8px;
+  border-radius: 12px;
+  border-bottom: 1px solid #eee;  /* works only in Firefox */
+  /* background-color: #fff; */
+  /* color: #333; */
+}
+
+.task-select option:hover {
+  background-color: #ffefeb; 
+}
+
+.task-select option:checked {
+  background-color: var(--color-primary);
+  color: var(--color-text);
+}
+
+
+.add-button {
+    background-color: var(--color-primary);
+    color: var(--color-text);
+    font-size: 36px;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    /* box-shadow: 0 4px 12px rgba(255, 127, 78, 0.3); */
+    /* transition: background-color 0.3s, transform 0.2s; */
+}
+
+.add-button:hover {
+    background-color: var(--color-primary);
+    /* transform: scale(1.05); */
+}
+
+.add-button svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Task List */
+.task-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    /* background-color: #2A2830; */
+    border-radius: 16px;
+    padding: 12px 20px;
+    transition: transform 0.2s ease;
+    border: 1px solid var(--color-secondary);
+}
+
+.task-item input{
+    border: none;
+}
+
+/* .task-item:hover {
+  transform: scale(1.01);
+} */
+
+.task-checkbox {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid var(--color-primary);
+    margin-right: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: border-color 0.3s;
+    background: none;
+    color: inherit;
+}
+
+.task-checkbox:hover {
+    border: 2px solid var(--color-text);
+}
+
+.task-checkbox.completed {
+    border-color: var(--color-primary);
+}
+
+.task-checkbox-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+}
+
+.task-text {
+    flex-grow: 1;
+    font-size: 18px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: color 0.3s;
+    color: var(--color-text);
+}
+
+.task-text.completed {
+    color: var(--color-secondary);
+    text-decoration: line-through;
+}
+
+.task-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    /* flex-shrink: 0; */
+    margin-left: 16px;
+}
+
+.task-date{
+    font-size: 12px;
+    margin-left: 1rem;
+}
+
+.edittask-select{
+    margin: auto;
+    right: 20%;
+    border-radius: 12px;
+    padding: 0.2rem 0.5rem;
+    border: 2px var(--color-primary) solid;
+    /* width: 100px; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: center;
+}
+
+.edittask-select:focus{
+    background: var(--color-primary);
+    border: 2px var(--color-primary) solid;
+    outline: none;
+}
+
+.edittask-select:hover{
+    border: 2px white solid;
+}
+
+.edittask-select option {
+  padding: 8px;
+  border-radius: 12px;
+  border-bottom: 1px solid var(--color-text);  /* works only in Firefox */
+  /* background-color: #fff; */
+  /* color: #333; */
+}
+
+.edittask-select option:hover {
+  background-color: #ffefeb;   /* hover highlight */
+}
+
+.edittask-select option:checked {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+.delete-button {
+    /* padding: 8px; */
+    /* color: #6B7280; */
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    color: var(--color-primary);
+}
+
+.delete-button svg {
+    width: 20px;
+    height: 20px;
+}
+
+.delete-button svg:hover {
+    stroke: white;
+}
+
+.empty-state {
+    text-align: center;
+    color: #6B7280;
+    font-size: 16px;
+    padding: 40px 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 886px) {
+    .container {
+        width: 100%;
+        padding: 24px;
+    }
+
+    .stats-section {
+        padding: 24px;
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .stats-text h2 {
+        font-size: 24px;
+    }
+
+    .progress-text {
+        font-size: 20px;
+    }
+
+    .task-text {
+        font-size: 16px;
+    }
+
+    .add-button {
+        width: 44px;
+        height: 44px;
+    }
+
+    .add-button svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .todo-app {
+        padding: 8px;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    .stats-section {
+        padding: 20px;
+    }
+
+    .input-section {
+        gap: 12px;
+    }
+
+    .task-item {
+        padding: 10px 16px;
+    }
+
+    .task-checkbox {
+        width: 28px;
+        height: 28px;
+        margin-right: 12px;
+    }
+
+    .task-text {
+        font-size: 16px;
+    }
+}

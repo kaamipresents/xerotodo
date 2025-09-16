@@ -1,0 +1,18 @@
+/* Default: Light Theme */
+:root {
+  --color-bg: #0c0c0c;
+  --color-text: white;
+  --color-primary: #FF7F4E;
+  --color-secondary: #36353D;
+  --color-tertiary: #36353D;
+}
+
+/* Dark Mode Theme */
+[data-theme="dark"] {
+  --color-bg: white;            /* Slightly lighter than pure black for less strain */
+  --color-text: #1F1F1F;          /* Softer white for text */
+  --color-primary: #FF7F4E;       /* Keep the original accent for consistency */
+  --color-secondary: #E0E0E0;     /* Darker gray for panels / cards */
+  --color-tertiary: #2C2C34;      /* Slightly lighter gray for borders / secondary elements */
+  --color-accent-hover: #FF9F6A;  /* Optional hover color for buttons or links */
+}

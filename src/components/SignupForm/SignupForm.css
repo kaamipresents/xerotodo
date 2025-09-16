@@ -1,0 +1,40 @@
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.signup-form input {
+  background-color: var(--color-secondary);
+  border: 1px solid var(--color-secondary);
+  color: var(--color-text);
+  border-radius: 16px;
+  padding: 12px 20px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.signup-form input::placeholder {
+  color: grey;
+}
+
+.signup-form input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(255, 127, 78, 0.1);
+}
+
+.signup-form button {
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  font-size: 16px;
+  border: none;
+  border-radius: 16px;
+  padding: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.signup-form button:hover {
+  background-color: var(--color-primary);
+}
