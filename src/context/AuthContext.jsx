@@ -3,15 +3,18 @@ import React, { createContext, useState, useEffect } from "react";
 import { replace, useLocation, useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 
 
 // 1️⃣ Create context object
 export const AuthContext = createContext();
 
-//function to call toast with custom message and timeout
-const notify = (message, time) => toast(message, { autoClose: time });
+// function to call toast with custom message and timeout only (styling from ToastContainer)
+const notify = (message, time = 1800) =>
+    toast(message, {
+        autoClose: time,
+    });
 
 // 2️⃣ Create provider component
 export const AuthProvider = ({ children }) => {
@@ -53,9 +56,9 @@ export const AuthProvider = ({ children }) => {
             
             // setCurrentUser(user.email);
             // toast("You are successfully logged in!",{autoClose: 500});
-            notify("You are successfully logged in!", 500);
-            // ToastContainer();
+            notify("You are successfully logged in!", 1800);
             navigate("/"); // redirect to TodoApp
+            return;
         } catch (error) {
             // toast("Invalid email or password. Please try again.",{autoClose: 500});
             notify("Invalid email or password. Please try again.", 500);

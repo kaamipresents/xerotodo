@@ -11,6 +11,7 @@ import { ThemeContext } from './context/ThemeContext'
 import { useContext } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import Profile from './pages/Profile/Profile'
+import { ToastContainer } from 'react-toastify'
 
 const App = () => {
 
@@ -25,6 +26,18 @@ const App = () => {
 
   return (
     <>
+    <ToastContainer
+      position="bottom-right"
+      autoClose={1800}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      // theme="colored"
+      toastStyle={{ background: "var(--color-primary)", color: "var(--color-text)" }}
+    />
       <AnimatePresence mode='wait'>
         <Routes>
           <Route

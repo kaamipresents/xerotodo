@@ -12,19 +12,6 @@ createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <AuthProvider>
         <ThemeProvider>
-    <ToastContainer
-      position="top-right"
-      autoClose={500}
-      hideProgressBar={false}
-      newestOnTop={false}
-      closeOnClick
-      rtl={false}
-      pauseOnFocusLoss
-      draggable
-      pauseOnHover
-      theme="colored"
-      toastStyle={{ background: "var(--color-primary)", color: "var(--color-text)" }}
-    />
             <App />
         </ThemeProvider>
       </AuthProvider>

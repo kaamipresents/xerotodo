@@ -402,7 +402,7 @@
     }
 
     .task-item {
-        flex-direction: column;
+        flex-direction: row;
         align-items: flex-start;
         gap: 8px;
         padding: 10px 12px;
