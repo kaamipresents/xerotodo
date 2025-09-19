@@ -81,6 +81,7 @@
 @media (max-width: 768px) {
     .header {
         padding: 1.5rem 2rem;
+        flex-direction: column;
     }
 
     .icons button,
