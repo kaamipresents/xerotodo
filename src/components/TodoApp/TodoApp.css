@@ -360,8 +360,9 @@
 
     .task-input {
         width: 100%;
-        font-size: 14px;
-        padding: 10px 14px;
+        font-size: 18px;
+        padding: 16px 18px;
+        border-radius: 20px;
     }
 
     .task-select,
