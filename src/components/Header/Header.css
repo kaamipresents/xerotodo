@@ -1,15 +1,17 @@
-.header{
+/* Header - responsive + no underline for links */
+.header {
     padding: 2rem 10rem;
-    /* width: 1200px; */
-    /* width: 80%; */
-    /* margin: auto; */
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-content: center;
+    align-items: center;
+    font-size: 36px;
+    font-weight: bold;
+    box-sizing: border-box;
 }
 
-.icons{
+/* container for the clickable controls */
+.icons {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -17,19 +19,102 @@
     gap: 10px;
 }
 
-.icons div{
+.icons div {
     cursor: pointer;
 }
 
-.icons button{
+/* Unified button-like styles for both <button> and <a> */
+.icons button,
+.icons a {
+    display: inline-flex;               /* make anchors behave like buttons */
+    align-items: center;
+    justify-content: center;
+    min-width: 200px;                   /* consistent desktop width */
+    padding: 0.5rem 1rem;
+    height: 48px;                       /* fixed height for level alignment */
     border-radius: 12px;
     border: none;
     outline: none;
     cursor: pointer;
     background: var(--color-primary);
-    padding: 0.5rem 1rem;
+    color: var(--color-btn-secondary, #fff); /* fallback color */
+    font-size: 16px;
+    text-decoration: none;              /* remove underline */
+    -webkit-text-decoration-skip: objects;
+    text-decoration-skip-ink: none;
+    box-sizing: border-box;
 }
 
-.icons button:hover{
-    background: var(--color-secondary);
+/* Make sure any child element doesn't reintroduce underlines */
+.icons button *,
+.icons a *,
+.icons button svg,
+.icons a svg {
+    text-decoration: none !important;
+}
+
+/* Explicitly clear all link states */
+/* .icons a:link,
+.icons a:visited,
+.icons a:hover,
+.icons a:active,
+.icons a:focus {
+    text-decoration: none;
+    color: inherit;
+} */
+
+/* hover/focus styling */
+ .icons button:hover,
+.icons a:hover {
+    background: var(--color-text);
+    color: var(--color-secondary);
+}
+
+/*
+.icons button:focus,
+.icons a:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255,127,78,0.15);
+} */
+
+/* Tablet screens */
+@media (max-width: 768px) {
+    .header {
+        padding: 1.5rem 2rem;
+    }
+
+    .icons button,
+    .icons a {
+        min-width: 150px;
+        font-size: 14px;
+        height: 44px;
+    }
+}
+
+/* Mobile screens — stack and make fully touch friendly */
+@media (max-width: 480px) {
+    .header {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .icons {
+        width: 100%;
+        gap: 8px;
+        display: flex;
+        flex-direction: column;    /* stacked buttons on mobile */
+        align-items: stretch;      /* stretch so each fills the width */
+    }
+
+    .icons button,
+    .icons a {
+        width: 100%;
+        min-width: 0;
+        max-width: none;
+        flex: 0 0 auto;
+        font-size: 14px;
+        height: 44px;
+    }
 }
