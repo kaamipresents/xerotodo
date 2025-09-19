@@ -82,6 +82,7 @@
     .header {
         padding: 1.5rem 2rem;
         flex-direction: column;
+        row-gap: 1rem;
     }
 
     .icons button,
