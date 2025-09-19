@@ -49,7 +49,7 @@ function Login() {
                 Signup
               </Link>
             </p>
-            <form onSubmit={handleDelete} className="deleteForm">
+            {/* <form onSubmit={handleDelete} className="deleteForm">
               <input
                 value={email}
                 type="email"
@@ -60,7 +60,7 @@ function Login() {
               <button type="submit" className="toggle-act-btn">
                 Delete
               </button>
-            </form>
+            </form> */}
           </div>
               }
         </motion.div>

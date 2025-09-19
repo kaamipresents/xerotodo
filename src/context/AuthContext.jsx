@@ -3,9 +3,15 @@ import React, { createContext, useState, useEffect } from "react";
 import { replace, useLocation, useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { ToastContainer, toast } from 'react-toastify';
+
+
 
 // 1️⃣ Create context object
 export const AuthContext = createContext();
+
+//function to call toast with custom message and timeout
+const notify = (message, time) => toast(message, { autoClose: time });
 
 // 2️⃣ Create provider component
 export const AuthProvider = ({ children }) => {
@@ -40,17 +46,21 @@ export const AuthProvider = ({ children }) => {
             console.log(userCredential);
             const user = userCredential.user;
             
-            console.log("Login successful:", user);
+            // console.log("Login successful:", user);
             
             
             setLoading(false);
             
             // setCurrentUser(user.email);
-            
+            // toast("You are successfully logged in!",{autoClose: 500});
+            notify("You are successfully logged in!", 500);
+            // ToastContainer();
             navigate("/"); // redirect to TodoApp
         } catch (error) {
-            console.error("Login error:", error.code, error.message);
-            alert("Invalid email or password. Please try again.");
+            // toast("Invalid email or password. Please try again.",{autoClose: 500});
+            notify("Invalid email or password. Please try again.", 500);
+            // console.error("Login error:", error.code, error.message);
+            // alert("Invalid email or password. Please try again.");
             setLoading(false);
         }
     };
@@ -59,12 +69,15 @@ export const AuthProvider = ({ children }) => {
     const logout = () => {
         signOut(auth)
       .then(() => {
-        alert("Successfully Logged Out")
+        // alert("Successfully Logged Out")
+        // toast("You are successfully logged out!",{autoClose: 500});
+        notify("You are successfully logged out!", 500);
         navigate("/login"); // redirect after logout
         setTasks([])
       })
       .catch((error) => {
-        console.error("Logout error:", error);
+        notify("Error logging out. Please try again.", 500);
+        // console.error("Logout error:", error);
       });
 
     };
@@ -78,13 +91,15 @@ export const AuthProvider = ({ children }) => {
             
             console.log("✅ User signed up:", user);
             
-            alert("Signup successful!");
+            // alert("Signup successful!");
+            notify("Signup successful! Please log in.", 500);
             setLoading(false);
             navigate("/login", { replace: true });
         } catch (error) {
             setLoading(false);
             console.error("❌ Signup error:", error.message);
-            alert(error.message); // show Firebase error (e.g., weak password, email already in use)
+            // alert(error.message); // show Firebase error (e.g., weak password, email already in use)
+            notify(error.message, 500);
         }
     };
    
@@ -98,16 +113,18 @@ export const AuthProvider = ({ children }) => {
         if (validUser) {
             const updatedusers = users.filter((user) => user.email !== validUser.email)
             localStorage.setItem("users", JSON.stringify(updatedusers));
-            alert("User Deleted");
+            // alert("User Deleted");
+            notify("User Deleted", 500);
             return;
         } else {
             alert("User does not exist");
+            notify("User does not exist", 500);
         }
     }
 
     // 6️⃣ Pass state + actions via context
     return (
-        <AuthContext.Provider value={{ isLoggedIn, loading, setLoading, currentUser, signup, login, logout, deleteUser, tasks, setTasks }}>
+        <AuthContext.Provider value={{ isLoggedIn, loading, setLoading, currentUser, signup, login, logout, deleteUser, tasks, setTasks, notify }}>
             {children}
         </AuthContext.Provider>
     );

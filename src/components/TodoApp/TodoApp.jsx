@@ -17,7 +17,7 @@ import {
 } from "firebase/firestore";
 
 const TodoApp = () => {
-  const { tasks, setTasks, currentUser } = useContext(AuthContext);
+  const { tasks, setTasks, currentUser, notify } = useContext(AuthContext);
   const [newTaskText, setNewTaskText] = useState("");
   const [editingTaskId, setEditingTaskId] = useState(null);
   const [editText, setEditText] = useState("");
@@ -50,6 +50,8 @@ const TodoApp = () => {
       );
       await setDoc(taskRef, newTask);
 
+      notify("Task added successfully!", 500);
+
       // fetch updated tasks from Firestore
       await fetchTasks();
       setNewTaskText("");
@@ -72,6 +74,8 @@ const TodoApp = () => {
           taskId
         );
         await updateDoc(taskRef, { completed: !taskToUpdate.completed });
+        // notify("Task status updated!", 500);
+
         await fetchTasks();
       }
     } catch (error) {
@@ -90,6 +94,7 @@ const TodoApp = () => {
         taskId
       );
       await deleteDoc(taskRef);
+      notify("Task deleted successfully!", 500);
       await fetchTasks();
     } catch (error) {
       console.error("❌ Error deleting task:", error);
@@ -115,6 +120,8 @@ const TodoApp = () => {
           text: editText,
           priority: editPriority,
         });
+
+          notify("Task updated successfully!", 500);
         console.log("✏️ Updated task:", taskId);
       }
 
